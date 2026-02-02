@@ -1,0 +1,27 @@
+# Configuration file to manage hyperparameters, file paths, etc.
+
+emotion_classifier:
+  model_name: "roberta-base"  
+  num_labels: 28                
+  train_data: "data/goemotions_1.csv"
+  val_split: 0.2
+  batch_size: 16
+  epochs: 3
+  max_length: 128
+  learning_rate: 5e-5
+
+response_generator:
+  model_name: "gpt2"
+  epochs: 3
+  batch_size: 2
+  max_length: 64
+  learning_rate: 5e-5
+  train_data: "data/dailydialog.csv"
+  val_split: 0.2
+
+inference:
+  classifier_path: "models/emotion_classifier"
+  generator_path: "models/response_generator"
+  max_new_tokens: 50
+  temperature: 0.7
+  top_p: 0.9
